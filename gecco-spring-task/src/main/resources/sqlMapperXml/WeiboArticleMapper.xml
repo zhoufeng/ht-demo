@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomaoguai.gecco.mapper.WeiboArticleMapper">
+  <resultMap id="BaseResultMap" type="com.xiaomaoguai.gecco.entity.WeiboArticle">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="create_tm" jdbcType="TIMESTAMP" property="createTm" />
+    <result column="click" jdbcType="BIT" property="click" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="href" jdbcType="VARCHAR" property="href" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, article_id, content, author, create_tm, click, source, href
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from weibo_article
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from weibo_article
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xiaomaoguai.gecco.entity.WeiboArticle">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into weibo_article (article_id, content, 
+      author, create_tm, click, 
+      source, href)
+    values ( #{articleId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{createTm,jdbcType=TIMESTAMP}, #{click,jdbcType=BIT}, 
+      #{source,jdbcType=VARCHAR}, #{href,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaomaoguai.gecco.entity.WeiboArticle">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into weibo_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="createTm != null">
+        create_tm,
+      </if>
+      <if test="click != null">
+        click,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="href != null">
+        href,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=BIGINT},
+      <if test="articleId != null">
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        #{createTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="click != null">
+        #{click,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null">
+        #{href,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomaoguai.gecco.entity.WeiboArticle">
+    update weibo_article
+    <set>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        create_tm = #{createTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="click != null">
+        click = #{click,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null">
+        href = #{href,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomaoguai.gecco.entity.WeiboArticle">
+    update weibo_article
+    set article_id = #{articleId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      create_tm = #{createTm,jdbcType=TIMESTAMP},
+      click = #{click,jdbcType=BIT},
+      source = #{source,jdbcType=VARCHAR},
+      href = #{href,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

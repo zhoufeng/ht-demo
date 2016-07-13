@@ -7,6 +7,7 @@ import com.geccocrawler.gecco.annotation.Gecco;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Request;
 import com.geccocrawler.gecco.annotation.RequestParameter;
+import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
@@ -20,7 +21,8 @@ public class HomPage implements HtmlBean {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@RequestParameter
+	@Text
+	@HtmlField(cssPath=".pf_username .username")
 	private String author;
 	
 	@Request

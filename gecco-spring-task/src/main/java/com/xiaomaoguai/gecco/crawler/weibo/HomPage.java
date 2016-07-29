@@ -49,6 +49,16 @@ public class HomPage implements HtmlBean {
 		this.articleList = articleList;
 	}
 
+	
+	
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 	public static void main(String[] args) {
 			HttpGetRequest start = new HttpGetRequest("http://weibo.com/kylinclub");
 			//HttpGetRequest start = new HttpGetRequest("http://weibo.com/hecmcn");

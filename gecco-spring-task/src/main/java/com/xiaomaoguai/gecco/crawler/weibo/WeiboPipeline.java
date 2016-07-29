@@ -38,6 +38,7 @@ public class WeiboPipeline implements Pipeline<HomPage> {
 					WeiboArticle article = new WeiboArticle();
 					article.setArticleId(articleTo.getArticleId());
 					article.setContent(articleTo.getContent());
+					article.setAuthor(bean.getAuthor());
 					article.setCreateTm(DateUtils.parseDate(articleTo.getCreateTime(), "yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm"));
 					article.setClick(Boolean.FALSE);
 					weiboMapper.insert(article);

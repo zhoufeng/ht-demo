@@ -2,6 +2,8 @@ package com.xiaomaoguai.gecco.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class WeiboArticle {
     private Long id;
 
@@ -10,6 +12,7 @@ public class WeiboArticle {
     private String content;
 
     private String author;
+
 
     private Date createTm;
 
@@ -50,7 +53,8 @@ public class WeiboArticle {
     public void setAuthor(String author) {
         this.author = author == null ? null : author.trim();
     }
-
+    
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone = "GMT+8")
     public Date getCreateTm() {
         return createTm;
     }

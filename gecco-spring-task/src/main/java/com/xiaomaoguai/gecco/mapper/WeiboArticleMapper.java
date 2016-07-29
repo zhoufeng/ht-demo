@@ -1,5 +1,7 @@
 package com.xiaomaoguai.gecco.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Select;
 
 import com.xiaomaoguai.gecco.entity.WeiboArticle;
@@ -19,4 +21,6 @@ public interface WeiboArticleMapper {
     
     @Select("select * from weibo_article where article_id = #{id}") 
     WeiboArticle selectByArticleId(Long id);
+    
+    List<WeiboArticle> selectPageList();
 }

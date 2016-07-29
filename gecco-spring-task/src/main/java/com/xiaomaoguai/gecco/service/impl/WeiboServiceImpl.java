@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.geccocrawler.gecco.demo.sogouwx.Article;
+import com.xiaomaoguai.gecco.entity.WeiboArticle;
 import com.xiaomaoguai.gecco.mapper.WeiboArticleMapper;
 import com.xiaomaoguai.gecco.service.WeiboService;
 
+@Service
 public class WeiboServiceImpl implements WeiboService {
 
 	@Autowired
@@ -16,9 +18,9 @@ public class WeiboServiceImpl implements WeiboService {
 	
 	
 	@Override
-	public List<Article> articleList(Map<String,Object> params) {
-		//List<Article> list=weiboArticleMapper.
-		return null;
+	public List<WeiboArticle> articleList(Map<String,Object> params) {
+		List<WeiboArticle> list=weiboArticleMapper.selectPageList();
+		return list;
 	}
 	
 }

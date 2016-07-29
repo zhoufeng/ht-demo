@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.geccocrawler.gecco.demo.sogouwx.Article;
+import com.xiaomaoguai.gecco.entity.WeiboArticle;
 
 public interface WeiboService {
 	
-	public List<Article> articleList(Map<String,Object> params);
+	public List<WeiboArticle> articleList(Map<String,Object> params);
 }

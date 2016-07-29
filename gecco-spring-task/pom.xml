@@ -21,6 +21,13 @@
 	</properties>
 
 	<dependencies>
+		<!-- httpclient 模拟登录模块 -->
+		<dependency>
+			<groupId>gecco-demo</groupId>
+  			<artifactId>httpclient-demo</artifactId>
+  			<version>${parent.version}</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>com.geccocrawler</groupId>
 			<artifactId>gecco-spring</artifactId>

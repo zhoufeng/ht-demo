@@ -5,7 +5,7 @@ import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
-public class ArticleTo implements HtmlBean{
+public class WeiboArticle implements HtmlBean{
 	
 	/**
 	 * 
@@ -15,7 +15,7 @@ public class ArticleTo implements HtmlBean{
 	/**	标题	**/
 	@Attr("name")
 	@HtmlField(cssPath=".WB_detail .WB_from.S_txt2 a")
-	private Long articleId;	
+	private String articleId;	
 	
 	/**	发布时间	**/
 	@Attr("title")
@@ -29,11 +29,11 @@ public class ArticleTo implements HtmlBean{
 
 	
 
-	public Long getArticleId() {
+	public String getArticleId() {
 		return articleId;
 	}
 
-	public void setArticleId(Long articleId) {
+	public void setArticleId(String articleId) {
 		this.articleId = articleId;
 	}
 

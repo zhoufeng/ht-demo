@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.xiaomaoguai.gecco.entity.WeiboArticle;
-import com.xiaomaoguai.gecco.mapper.WeiboArticleMapper;
+import com.xiaomaoguai.gecco.entity.Article;
 import com.xiaomaoguai.gecco.service.WeiboService;
 
 @Controller
@@ -29,7 +28,7 @@ public class WeiboController {
 	@ResponseBody
 	public Map<String, Object>  articleList(){
 		Map<String,Object> ret=new HashMap<String,Object>();
-		List<WeiboArticle> articleList=weiboService.articleList(new HashMap());
+		List<Article> articleList=weiboService.articleList(new HashMap());
 		ret.put("list", articleList);
 		return ret;
 	}

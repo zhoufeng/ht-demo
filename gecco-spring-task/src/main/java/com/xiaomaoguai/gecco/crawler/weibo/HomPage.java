@@ -6,12 +6,10 @@ import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.Gecco;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Request;
-import com.geccocrawler.gecco.annotation.RequestParameter;
 import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
-import com.xiaomaoguai.gecco.entity.WeiboArticle;
 
 @Gecco(matchUrl="http://weibo.com/{author}", pipelines={"weiboPipeline"},timeout=5000)
 public class HomPage implements HtmlBean {
@@ -30,7 +28,7 @@ public class HomPage implements HtmlBean {
 	
 	
 	@HtmlField(cssPath=".WB_frame_c div[tbinfo]")
-	private List<ArticleTo> articleList;
+	private List<WeiboArticle> articleList;
 
 	public HttpRequest getRequest() {
 		return request;
@@ -41,11 +39,11 @@ public class HomPage implements HtmlBean {
 	}
 
 	
-	public List<ArticleTo> getArticleList() {
+	public List<WeiboArticle> getArticleList() {
 		return articleList;
 	}
 
-	public void setArticleList(List<ArticleTo> articleList) {
+	public void setArticleList(List<WeiboArticle> articleList) {
 		this.articleList = articleList;
 	}
 

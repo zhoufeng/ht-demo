@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomaoguai.gecco.mapper.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.xiaomaoguai.gecco.entity.Article">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="create_tm" jdbcType="TIMESTAMP" property="createTm" />
+    <result column="source_type" jdbcType="INTEGER" property="sourceType" />
+    <result column="href" jdbcType="VARCHAR" property="href" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, article_id, content, author, create_tm, source_type, href
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ds_article
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ds_article
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xiaomaoguai.gecco.entity.Article">
+    insert into ds_article (id, article_id, content, 
+      author, create_tm, source_type, 
+      href)
+    values (#{id,jdbcType=BIGINT}, #{articleId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{createTm,jdbcType=TIMESTAMP}, #{sourceType,jdbcType=INTEGER}, 
+      #{href,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaomaoguai.gecco.entity.Article">
+    insert into ds_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="createTm != null">
+        create_tm,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="href != null">
+        href,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="articleId != null">
+        #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        #{createTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="href != null">
+        #{href,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomaoguai.gecco.entity.Article">
+    update ds_article
+    <set>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        create_tm = #{createTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="href != null">
+        href = #{href,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomaoguai.gecco.entity.Article">
+    update ds_article
+    set article_id = #{articleId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      create_tm = #{createTm,jdbcType=TIMESTAMP},
+      source_type = #{sourceType,jdbcType=INTEGER},
+      href = #{href,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectPageList"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from weibo_article
+    order by create_tm desc
+  </select>
+</mapper>

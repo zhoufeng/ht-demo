@@ -2,23 +2,18 @@ package com.xiaomaoguai.gecco.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-public class WeiboArticle {
+public class Article {
     private Long id;
 
-    private Long articleId;
+    private String articleId;
 
     private String content;
 
     private String author;
 
-
     private Date createTm;
 
-    private Boolean click;
-
-    private String source;
+    private Integer sourceType;
 
     private String href;
 
@@ -30,12 +25,12 @@ public class WeiboArticle {
         this.id = id;
     }
 
-    public Long getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
     public String getContent() {
@@ -53,8 +48,7 @@ public class WeiboArticle {
     public void setAuthor(String author) {
         this.author = author == null ? null : author.trim();
     }
-    
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone = "GMT+8")
+
     public Date getCreateTm() {
         return createTm;
     }
@@ -63,20 +57,12 @@ public class WeiboArticle {
         this.createTm = createTm;
     }
 
-    public Boolean getClick() {
-        return click;
+    public Integer getSourceType() {
+        return sourceType;
     }
 
-    public void setClick(Boolean click) {
-        this.click = click;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source == null ? null : source.trim();
+    public void setSourceType(Integer sourceType) {
+        this.sourceType = sourceType;
     }
 
     public String getHref() {

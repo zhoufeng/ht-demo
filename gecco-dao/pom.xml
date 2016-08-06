@@ -6,14 +6,10 @@
 		<artifactId>xuyong</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>gecco-gov-test</artifactId>
+	<artifactId>gecco-dao</artifactId>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.geccocrawler</groupId>
-			<artifactId>gecco</artifactId>
-			<version>1.1.2</version>
-		</dependency>
+
 	</dependencies>
 
 </project>

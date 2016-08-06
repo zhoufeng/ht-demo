@@ -6,20 +6,20 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xiaomaoguai.gecco.entity.WeiboArticle;
-import com.xiaomaoguai.gecco.mapper.WeiboArticleMapper;
+import com.xiaomaoguai.gecco.entity.Article;
+import com.xiaomaoguai.gecco.mapper.ArticleMapper;
 import com.xiaomaoguai.gecco.service.WeiboService;
 
 @Service
 public class WeiboServiceImpl implements WeiboService {
 
 	@Autowired
-	private WeiboArticleMapper weiboArticleMapper;
+	private ArticleMapper articleMapper;
 	
 	
 	@Override
-	public List<WeiboArticle> articleList(Map<String,Object> params) {
-		List<WeiboArticle> list=weiboArticleMapper.selectPageList();
+	public List<Article> articleList(Map<String,Object> params) {
+		List<Article> list=articleMapper.selectPageList();
 		return list;
 	}
 	

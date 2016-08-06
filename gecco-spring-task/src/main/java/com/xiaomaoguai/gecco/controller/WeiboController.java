@@ -13,7 +13,7 @@ import com.xiaomaoguai.gecco.entity.Article;
 import com.xiaomaoguai.gecco.service.WeiboService;
 
 @Controller
-@RequestMapping("weibo")
+@RequestMapping("article")
 public class WeiboController {
 	
 	@Autowired

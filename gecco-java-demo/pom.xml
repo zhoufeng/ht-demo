@@ -17,8 +17,11 @@
     	<dependency>
     		<groupId>com.geccocrawler</groupId>
             <artifactId>gecco-spring</artifactId>
-            <version>1.1.2</version>
     	</dependency>
+    	<dependency>
+			<groupId>com.geccocrawler</groupId>
+			<artifactId>gecco</artifactId>
+		</dependency>
 
         <dependency>
             <groupId>commons-io</groupId>

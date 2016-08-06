@@ -1,0 +1,79 @@
+package com.xiaomaoguai.gecco.crawler.weibo;
+
+import java.util.List;
+
+import com.geccocrawler.gecco.GeccoEngine;
+import com.geccocrawler.gecco.annotation.Gecco;
+import com.geccocrawler.gecco.annotation.HtmlField;
+import com.geccocrawler.gecco.annotation.Request;
+import com.geccocrawler.gecco.annotation.Text;
+import com.geccocrawler.gecco.request.HttpGetRequest;
+import com.geccocrawler.gecco.request.HttpRequest;
+import com.geccocrawler.gecco.spider.HtmlBean;
+
+/**
+ * 微博列表页面
+ * @author zhoufeng
+ * @ClassName HomPage
+ * @Version 1.0.0
+ */
+@Gecco(matchUrl="http://weibo.com/{author}", pipelines={"weiboPipeline"},timeout=5000)
+public class HomPage implements HtmlBean {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Text
+	@HtmlField(cssPath=".pf_username .username")
+	private String author;
+	
+	@Request
+	private HttpRequest request;
+	
+	
+	@HtmlField(cssPath=".WB_frame_c div[tbinfo]")
+	private List<WeiboArticle> articleList;
+
+	public HttpRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpRequest request) {
+		this.request = request;
+	}
+
+	
+	public List<WeiboArticle> getArticleList() {
+		return articleList;
+	}
+
+	public void setArticleList(List<WeiboArticle> articleList) {
+		this.articleList = articleList;
+	}
+
+	
+	
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public static void main(String[] args) {
+			HttpGetRequest start = new HttpGetRequest("http://weibo.com/kylinclub");
+			//HttpGetRequest start = new HttpGetRequest("http://weibo.com/hecmcn");
+			start.addHeader("User-Agent", "spider");
+	        start.setCharset("GBK");
+	        GeccoEngine.create()
+	                .classpath("com.xiaomaoguai.gecco.crawler.weibo")
+	                .start(start)
+	                .interval(1000)
+	                .loop(false)
+	                .run();
+	}
+
+}

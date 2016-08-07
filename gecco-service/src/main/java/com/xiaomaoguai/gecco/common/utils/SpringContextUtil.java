@@ -4,6 +4,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import com.geccocrawler.gecco.GeccoEngine;
+import com.geccocrawler.gecco.spring.SpringPipelineFactory;
+
 public class SpringContextUtil implements ApplicationContextAware {
 
 	// Spring应用上下文环境
@@ -16,6 +19,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 	 */
 	public void setApplicationContext(ApplicationContext applicationContext) {
 		SpringContextUtil.applicationContext = applicationContext;
+		init();
 	}
 
 	/**
@@ -25,6 +29,10 @@ public class SpringContextUtil implements ApplicationContextAware {
 		return applicationContext;
 	}
 
+	
+	private void init(){
+	
+	}
 	/**
 	 * 获取对象
 	 * @param name

@@ -1,23 +1,22 @@
-package com.inga.utils;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
- *
- * 模拟SSL请求
- *
- * Created by abing on 2015/12/29.
+ * Created by abing on 2015/12/30.
  */
-public class HttpGetRequest {
+public class HttpPostRequest {
 
 
     /**
@@ -27,8 +26,8 @@ public class HttpGetRequest {
      * @param url
      * @return
      */
-    public static CloseableHttpResponse getRequest(String url){
-        return getRequest(url , null , null);
+    public static CloseableHttpResponse postRequest(String url , List<BasicNameValuePair> nvps){
+        return postRequest(url, null, null , nvps);
     }
 
     /**
@@ -38,8 +37,9 @@ public class HttpGetRequest {
      * @param url
      * @return
      */
-    public static CloseableHttpResponse getRequest(String url , Map<String , String> map){
-        return getRequest(url , null , map);
+    public static CloseableHttpResponse postRequest(String url , Map<String ,
+            String> map,List<BasicNameValuePair> nvps){
+        return postRequest(url, null, map , nvps);
     }
 
 
@@ -51,12 +51,13 @@ public class HttpGetRequest {
      * @param firstRes
      * @return response  CloseableHttpResponse
      */
-    public static CloseableHttpResponse getRequest(String url ,
-                                                   CloseableHttpResponse firstRes , Map<String , String> map){
+    public static CloseableHttpResponse postRequest(String url ,
+                                                   CloseableHttpResponse firstRes , Map<String , String> map,
+                                                    List<BasicNameValuePair> nvps){
 
         CloseableHttpResponse response = null;
         CloseableHttpClient httpClient = null;
-        HttpGet httpGet = new HttpGet(url);
+        HttpPost httpPost = new HttpPost(url);
         try {
             httpClient = ClientUtil.createSSLClient();
             RequestConfig requestConfig = RequestConfig.custom()
@@ -64,25 +65,16 @@ public class HttpGetRequest {
                     .setConnectTimeout(20000)
                     .setSocketTimeout(20000)
                     .build();
-            httpGet.setConfig(requestConfig);
-//            if (firstRes == null){
-//                httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0");
-//            } else {
-//                Header[] headers = firstRes.getAllHeaders();
-//                for (Header header : headers){
-//                    httpGet.setHeader(header);
-//                }
-//            }
-            httpGet = setHttpGetHeader(httpGet, firstRes, map);
-
-            response = httpClient.execute(httpGet);
+            httpPost.setConfig(requestConfig);
+            httpPost = setHttpPostHeader(httpPost, firstRes, map);
+            if (nvps != null){
+                httpPost.setEntity(new UrlEncodedFormEntity(nvps , HTTP.UTF_8));
+            }
+            response = httpClient.execute(httpPost);
 
 
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-//            httpGet.releaseConnection();
-
         }
         return response;
     }
@@ -94,26 +86,25 @@ public class HttpGetRequest {
      *
      * 然后再进行组装报文头
      *
-     * @param get
+     * @param post
      * @param httpResponse
      * @param map
      * @return
      */
-    private static HttpGet setHttpGetHeader(HttpGet get , CloseableHttpResponse httpResponse ,
-                               Map<String , String> map){
+    private static HttpPost setHttpPostHeader(HttpPost post , CloseableHttpResponse httpResponse ,
+                                            Map<String , String> map){
         if (httpResponse == null && map == null ){
-            get.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0");
+            post.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0");
         } else if(httpResponse != null && map == null) {
             Header[] headers = httpResponse.getAllHeaders();
             for (Header header : headers) {
-                get.setHeader(header);
+                post.setHeader(header);
             }
         } else if (map.size() != 0 && httpResponse == null){
             for (Map.Entry<String , String> me : map.entrySet()){
-                get.setHeader(me.getKey() , me.getValue());
+                post.setHeader(me.getKey() , me.getValue());
             }
         }
-        return get;
+        return post;
     }
-
 }

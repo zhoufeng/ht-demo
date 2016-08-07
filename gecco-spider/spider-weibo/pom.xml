@@ -21,11 +21,7 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.bohusoft.spider</groupId>
-			<artifactId>gecco-dao</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+
 		
 	</dependencies>
 

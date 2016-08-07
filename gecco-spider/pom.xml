@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>spider-weibo</module>
+		<module>spider-taoguba</module>
 		<!-- <module>spider-nuomi</module> -->
 	</modules>
 
@@ -23,6 +24,14 @@
 		<jdk.version>1.7</jdk.version>
 		<spring.version>4.2.5.RELEASE</spring.version>
 	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+			<artifactId>gecco-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 	
 	<dependencyManagement>
 	<dependencies>

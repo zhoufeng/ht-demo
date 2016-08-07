@@ -38,6 +38,13 @@
   			<artifactId>gecco-service</artifactId>
   			<version>${parent.version}</version>
 		</dependency>
+		
+		<!-- 微博 -->
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>spider-weibo</artifactId>
+  			<version>${parent.version}</version>
+		</dependency>
 	
 		<dependency>
 			<groupId>com.geccocrawler</groupId>
@@ -141,11 +148,7 @@
 		<finalName>gecco-spring-task</finalName>
 		<plugins>
 
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.3</version>
-			</plugin>
+			
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

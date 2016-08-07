@@ -1,21 +1,19 @@
-package com.inga.utils.parse;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
-import com.inga.entity.WeiboBean;
-import com.inga.utils.log.PlatformLogger;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by abing on 2016/1/4.
  */
 public class ParseHtml {
 
-    public static List<WeiboBean> list = new ArrayList<WeiboBean>();
+    public static List<TaogubaBean> list = new ArrayList<TaogubaBean>();
 
     /**
      * 解析 “消息” 里面的信息 提取出来 打印出来 方便查看
@@ -27,7 +25,7 @@ public class ParseHtml {
         Elements elements = doc.getElementsByTag("div");
         for (Element el :elements){
             if (el.attr("class").equals("c") && el.toString().indexOf("img") != -1) {
-                WeiboBean bean = new WeiboBean();
+            	TaogubaBean bean = new TaogubaBean();
                 Elements divs = el.getElementsByTag("a");
                 Element ea = divs.get(0);
                 bean.setEnname(ea.attr("href").substring(1));
@@ -41,7 +39,7 @@ public class ParseHtml {
         }
 
         printStart("PRINT PRIVATE MESSAGE");
-        for (WeiboBean bean1 : list) {
+        for (TaogubaBean bean1 : list) {
             PlatformLogger.message("--------------------------------------------------------------------------------");
             StringBuilder sb = new StringBuilder();
             sb.append(bean1.getName());
@@ -61,7 +59,7 @@ public class ParseHtml {
      * @param html
      */
     public static void printMainPageMsg(String html){
-        list = new ArrayList<WeiboBean>();
+        list = new ArrayList<TaogubaBean>();
         Document doc  = Jsoup.parse(html);
         Elements elements = doc.getElementsByTag("div");
         for (Element ele : elements) {
@@ -73,14 +71,14 @@ public class ParseHtml {
                 String text = ele.text();
                 String name = text.substring(0, text.indexOf(":"));
                 String val = text.substring(text.indexOf(":") + 1);
-                WeiboBean bean = new WeiboBean();
+                TaogubaBean bean = new TaogubaBean();
                 bean.setName(name);
                 bean.setValue(val);
                 list.add(bean);
             }
         }
         printStart("PRINT MAIN  MESSAGE" + list.size());
-        for (WeiboBean bean : list) {
+        for (TaogubaBean bean : list) {
             StringBuilder sb  = new StringBuilder();
             sb.append(bean.getName());
             int len = bean.getName().length();

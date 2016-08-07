@@ -1,4 +1,4 @@
-package com.inga.main;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +11,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.inga.action.FollowAction;
-import com.inga.action.FollowWeiboInfoAction;
-import com.inga.common.HeaderConstant;
-import com.inga.common.UserConstant;
-import com.inga.entity.FollowBean;
-import com.inga.headers.LoginHeader;
-import com.inga.utils.ClientUtil;
-import com.inga.utils.HttpGetRequest;
-import com.inga.utils.HttpPostRequest;
-import com.inga.utils.PrintOutUtils;
-import com.inga.utils.log.PlatformLogger;
-import com.inga.utils.parse.ParseHtml;
+import com.xiaomaoguai.gecco.crawler.taoguba.util.log.PlatformLogger;
 
-/**
- * Created by abing on 2015/12/31.
- */
-public class WeiboSpiderMain {
-    private static String location;
+public class TaogubaLoginUtil {
+	private static String location;
     public static StringBuilder cookie = new StringBuilder();
     private static LoginHeader header = new LoginHeader();
     private static String loginAction = null;
@@ -41,7 +27,7 @@ public class WeiboSpiderMain {
      * http://login.weibo.cn/login/
      *
      */
-    public void preLogin(){
+    private void preLogin(){
 
         Map<String , String> map = header.getLoginHeader();
         CloseableHttpResponse response = HttpGetRequest.getRequest("http://login.weibo.cn/login/", map);
@@ -65,14 +51,15 @@ public class WeiboSpiderMain {
         }
 
     }
-
+    
+    
     /**
      * 从页面中的登录信息中的ation 然后进行登录操作 使用post方式
      *
      * http://login.weibo.cn/login/    + loginAction
      *
      */
-    public void loginActioon(){
+    private void loginActioon(){
         nvps.add(new BasicNameValuePair("mobile" , UserConstant.username));
         nvps.add(new BasicNameValuePair(pwdName , UserConstant.password));
         nvps.add(new BasicNameValuePair("submit", "登录"));
@@ -93,7 +80,7 @@ public class WeiboSpiderMain {
      * ST-MTk1MDU4NTQ4NQ==-1451872100-yf-DEA57B8ED3F3117247AE1F4F72DA076B&vt=4
      *
      */
-    public void loginMain(){
+    private void loginMain(){
 
         Map<String , String> map = header.getNewLogin(cookie.toString());
         String strParam = location.split("\\?")[1];
@@ -109,76 +96,11 @@ public class WeiboSpiderMain {
         PlatformLogger.message("THE　LOGIN MAIN MESSAGE : " + html);
 
     }
-
+    
     /**
-     *  获取账号中的私信   并打印出来  查看
-     *
-     *   PrintOutUtils.printEntity(response);
-     *
+     * 登录淘股吧,检查cookie是否有效,如果有效则登录
      */
-    public void privateMsg(){
-
-        Map<String , String> map = header.getUnRead(cookie.toString());
-        CloseableHttpResponse response = HttpGetRequest.getRequest("http://weibo.cn/msg/?tf=5_010", map);
-        String html = PrintOutUtils.getEntityToString(response);
-        PlatformLogger.message("THE PRIVATE MESSAGE PAGE HTML : " + html);
-        ParseHtml.printPrivateMsg(html);
-
-    }
-
-    /**
-     * 查看关注人
-     *
-     * http://weibo.cn/1950585485/follow?vt=4&PHPSESSID=
-     * @param args
-     */
-
-    public void getFollow() {
-        Map<String , String> map = header.getFollow(cookie.toString());
-        CloseableHttpResponse response = HttpGetRequest.getRequest("http://weibo.cn/1950585485/follow", map);
-        String html = PrintOutUtils.getEntityToString(response);
-        PlatformLogger.message("THE FOLLOW PAGE HTML : " + html);
-        FollowAction.getAllFollow(html, cookie.toString());
-
-    }
-
-
-    /**
-     * 输出所有关注人的当前页面的微博信息
-     *
-     */
-    public void getFollowWeiboInfo(){
-        List<FollowBean> list = FollowAction.list;
-        if (list.size() == 0){
-            return;
-        }
-        Map<String , String> map = header.getFollow(cookie.toString());
-        for (FollowBean bean : list){
-            CloseableHttpResponse response = HttpGetRequest.getRequest(bean.getUrl() , map);
-            String html = PrintOutUtils.getEntityToString(response);
-            PlatformLogger.message("===================================================================================\n");
-            PlatformLogger.message("THE PEOPLE WEIBO MAIN PAGE INFO : " + html);
-            PlatformLogger.message(" THE PEOPLE " + bean.getName() + "  (  " + bean.getEnname() + "  )  WEIBO : \n" );
-            FollowWeiboInfoAction.getWeiboInfo(html);
-            PlatformLogger.message("===================================================================================\n");
-        }
-
-    }
-
-
-
-
-
-    public static void main(String[] args) {
-        WeiboSpiderMain spiderMain = new WeiboSpiderMain();
-        spiderMain.preLogin();      //获取登录页面
-        spiderMain.loginActioon();    //登录操作
-        spiderMain.loginMain();     //获取登录以后的主页面
-        spiderMain.privateMsg();  //获取私信信息
-        spiderMain.getFollow();     //获取所有的关注人信息
-        spiderMain.getFollowWeiboInfo();
-
-//        HttpClient client
+    public void loginTaoguba(){
 
     }
 }

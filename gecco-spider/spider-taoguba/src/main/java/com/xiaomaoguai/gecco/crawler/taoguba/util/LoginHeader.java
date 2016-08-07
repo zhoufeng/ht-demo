@@ -1,7 +1,4 @@
-package com.inga.headers;
-
-import com.inga.common.HeaderConstant;
-import org.apache.http.Header;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +19,7 @@ public class LoginHeader {
         map.put(HeaderConstant.Accept_Encoding , "gzip, deflate");
         map.put(HeaderConstant.Accept_Language , "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3");
         map.put(HeaderConstant.Connection , "keep-alive");
-        map.put(HeaderConstant.Host , "login.weibo.cn");
+        map.put(HeaderConstant.Host , "http://www.taoguba.com.cn/");
         map.put(HeaderConstant.User_Agent , "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0");
         return map;
     }
@@ -30,7 +27,7 @@ public class LoginHeader {
     public Map<String , String> getLoginActionHeader(){
         Map<String , String> map = new HashMap<String, String>();
         map.put(HeaderConstant.User_Agent , "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0");
-        map.put(HeaderConstant.Referer , "http://login.weibo.cn/login/ ");
+        map.put(HeaderConstant.Referer , "http://www.taoguba.com.cn/ ");
         map.put(HeaderConstant.Content_Type , "application/x-www-form-urlencoded");
         return map;
     }
@@ -46,7 +43,7 @@ public class LoginHeader {
         map.put(HeaderConstant.Accept_Encoding , "gzip, deflate");
         map.put(HeaderConstant.Accept_Language , "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3");
         map.put(HeaderConstant.Connection , "keep-alive");
-        map.put(HeaderConstant.Host , "login.weibo.cn");
+        map.put(HeaderConstant.Host , "www.taoguba.com.cn");
         map.put(HeaderConstant.User_Agent , "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0");
         return map;
     }

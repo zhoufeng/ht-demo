@@ -19,7 +19,7 @@ public interface ArticleMapper {
 
     int updateByPrimaryKey(Article record);
     
-    @Select("select * from weibo_article where article_id = #{id}") 
+    @Select("select * from ds_article where article_id = #{id}") 
     Article selectByArticleId(String id);
     
     List<Article> selectPageList();

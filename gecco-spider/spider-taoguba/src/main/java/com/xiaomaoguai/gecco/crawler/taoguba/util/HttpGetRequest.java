@@ -1,4 +1,4 @@
-package com.inga.utils;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

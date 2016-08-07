@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/ClientUtil.java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/HttpGetRequest.java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/HttpPostRequest.java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/LoginHeader.java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/ParseHtml.java=UTF-8
+encoding//src/main/java/com/xiaomaoguai/gecco/crawler/taoguba/util/PrintOutUtils.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

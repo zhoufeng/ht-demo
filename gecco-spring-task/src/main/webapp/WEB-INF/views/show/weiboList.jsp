@@ -14,7 +14,7 @@
 		<th scope="row">{{i+1}}</th>
 		<td>{{ d.list[i].content }}</td>
 		<td width=100>{{ d.list[i].author }}</td>
-		<td width=130 >{{ d.list[i].createTm }}</td>
+		<td width=140 >{{ d.list[i].createTm }}</td>
 	</tr>
 {{# } }}
 </script>
@@ -58,6 +58,7 @@
 					"pageNo":pageNo
 				}, function(res) {
 					var tpl = laytpl(gettpl);
+					$("#list").html("")
 					$("#list").append(tpl.render(res));
 				}); 
 			},

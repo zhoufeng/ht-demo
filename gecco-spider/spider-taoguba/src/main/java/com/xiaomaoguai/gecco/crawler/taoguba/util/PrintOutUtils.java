@@ -1,12 +1,13 @@
-package com.inga.utils;
+package com.xiaomaoguai.gecco.crawler.taoguba.util;
 
-import com.inga.utils.log.PlatformLogger;
+import java.io.IOException;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
+import com.xiaomaoguai.gecco.crawler.taoguba.util.log.PlatformLogger;
 
 /**
  * Created by abing on 2015/12/30.

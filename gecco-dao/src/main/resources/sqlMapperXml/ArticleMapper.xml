@@ -114,11 +114,11 @@
       href = #{href,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  
+    
   <select id="selectPageList"  resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from weibo_article
+    from ds_article
     order by create_tm desc
   </select>
 </mapper>

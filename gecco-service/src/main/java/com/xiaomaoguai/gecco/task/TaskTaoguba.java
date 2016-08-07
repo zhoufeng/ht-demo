@@ -1,4 +1,4 @@
-package com.xiaomaoguai.gecco.service.impl;
+package com.xiaomaoguai.gecco.task;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.request.HttpGetRequest;
@@ -15,12 +15,12 @@ import java.util.Date;
 
 /**
  * 说明 :
- * 作者 : WeiHui.jackson
+ * 作者 : zhoufeng
  * 日期 : 2016/4/27 16:26
  * 版本 : 1.0.0
  */
 @Service
-public class TaskWeibo  implements Job {
+public class TaskTaoguba  implements Job {
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
@@ -32,12 +32,12 @@ public class TaskWeibo  implements Job {
         
         String[] persions=scheduleJob.getName().split(",");
         for(String persion:persions){
-	        HttpGetRequest start = new HttpGetRequest("http://weibo.com/"+persion);
+	        HttpGetRequest start = new HttpGetRequest("http://www.taoguba.com.cn/moreTopic?userID="+persion);
 	        start.addHeader("User-Agent", "spider");
 	        start.setCharset("GBK");
 	        GeccoEngine.create()
 	                .pipelineFactory(springPipelineFactory)
-	                .classpath("com.xiaomaoguai.gecco.crawler.weibo")
+	                .classpath("com.xiaomaoguai.gecco.crawler.taoguba")
 	                .start(start)
 	                .interval(2000)
 	                .loop(false)

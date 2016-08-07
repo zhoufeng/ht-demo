@@ -21,7 +21,7 @@ public class HttpPostRequest {
 
     /**
      *
-     * get 请求 返回 CloseableHttpResponse
+     * get 璇锋眰 杩斿洖 CloseableHttpResponse
      *
      * @param url
      * @return
@@ -32,7 +32,7 @@ public class HttpPostRequest {
 
     /**
      *
-     * get 请求 返回 CloseableHttpResponse
+     * get 璇锋眰 杩斿洖 CloseableHttpResponse
      *
      * @param url
      * @return
@@ -45,7 +45,7 @@ public class HttpPostRequest {
 
     /**
      *
-     * get 请求 返回 CloseableHttpResponse 传入的是两个参数
+     * get 璇锋眰 杩斿洖 CloseableHttpResponse 浼犲叆鐨勬槸涓や釜鍙傛暟
      *
      * @param url
      * @param firstRes
@@ -80,11 +80,11 @@ public class HttpPostRequest {
     }
 
     /**
-     * 设置httpget请求的请求报文头
+     * 璁剧疆httpget璇锋眰鐨勮姹傛姤鏂囧ご
      *
-     * 判断请求过来的是自己组装的额map 还是上一次请求过来的response对象
+     * 鍒ゆ柇璇锋眰杩囨潵鐨勬槸鑷繁缁勮鐨勯map 杩樻槸涓婁竴娆¤姹傝繃鏉ョ殑response瀵硅薄
      *
-     * 然后再进行组装报文头
+     * 鐒跺悗鍐嶈繘琛岀粍瑁呮姤鏂囧ご
      *
      * @param post
      * @param httpResponse

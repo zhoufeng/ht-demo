@@ -32,7 +32,10 @@ public class WeiboArticle implements HtmlBean{
 	@Text
 	@HtmlField(cssPath=".WB_detail [node-type=feed_list_content]")
 	private String content;
-
+	
+	@Text
+	@HtmlField(cssPath=".WB_from.S_txt2 a:first")
+	private String href;
 	
 
 	public String getArticleId() {
@@ -58,7 +61,13 @@ public class WeiboArticle implements HtmlBean{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+
+	public String getHref() {
+		return href;
+	}
+
+	public void setHref(String href) {
+		this.href = href;
+	}
 	
 }

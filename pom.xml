@@ -13,7 +13,7 @@
 		<module>gecco-test</module>
 		<module>httpclient-demo</module>
 		<module>gecco-common</module>
-		<module>spiderimpl</module>
+		<module>gecco-spider</module>
 		<module>gecco-dao</module>
 		<module>gecco-service</module>
 	</modules>

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.bohusoft.spider</groupId>
-		<artifactId>spiderimpl</artifactId>
+		<artifactId>gecco-spider</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>spider-gunxueqiu</artifactId>

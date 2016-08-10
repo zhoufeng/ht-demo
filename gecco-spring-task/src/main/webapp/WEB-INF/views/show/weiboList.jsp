@@ -17,11 +17,12 @@
 			
 
 	<dl>
-		<dt><a target="_blank" href="/goto?duid=b6bef5de915a7ed7&amp;dtype=mblog&amp;tid=weibo&amp;pn=33&amp;tpl=weibo&amp;qs=wb&amp;w=__MAIN__&amp;p="><img src="http://photo.xueqiu.com/community/20139/1381503136662-1381503143638.png!50x50.png" class="headPic" onerror="javascript:this.src='/public500827/images/no.jpg'"></a>
+		<dt><a target="_blank" href="#"><img src="{{d.list[i].chatHead}}" class="headPic" onerror="javascript:this.src='/public500827/images/no.jpg'"></a>
 		</dt>
-		<dd><a href="#">{{d.list[i].author}}</a> {{ d.list[i].content }}......<a href="{{d.list[i].href}}">查看全文</a></dd>
+		<dd><a target="_blank" href="{{d.list[i].href}}">{{d.list[i].author}}</a> {{ d.list[i].content }}......<a target="_blank" href="{{d.list[i].href}}">查看全文</a></dd>
+		<br style="clear:both;" />
 	</dl>
-			
+		<div>{{showTip(d.list[i])}}</div>	
 		</div>
 {{# } }}
 
@@ -67,6 +68,30 @@
 	/* laytpl(gettpl).render(data, function(html){
 	    document.getElementById("list").innerHTML = html;
 	}); */
+	
+	function showTip(item){
+		
+		var text='<span style="margin-right:30px">'+item.createTm+"</span>";
+		switch(item.sourceType){
+		case 1:
+			text+="来自新浪微博";
+			break;
+		default:
+			break;
+		}
+		return text;
+	}
+	
+	function  DateDiff(sDate1,  sDate2){    //sDate1和sDate2是2006-12-18格式    
+        var  aDate,  oDate1,  oDate2,  iDays    
+        aDate  =  sDate1.split("-")    
+        oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为12-18-2006格式    
+        aDate  =  sDate2.split("-")    
+        oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    
+        iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数   
+        return  iDays + 1   
+    }
+	
 	(function($){
 		//表格对象
 		var grid={
@@ -92,6 +117,8 @@
 			}
 			
 		};
+		
+		
 		
 		//初始列表分页
 		/* laypage({

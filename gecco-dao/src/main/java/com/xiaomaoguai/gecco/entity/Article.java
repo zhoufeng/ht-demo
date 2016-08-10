@@ -16,6 +16,8 @@ public class Article {
     private Integer sourceType;
 
     private String href;
+    
+    private String chatHead;
 
     public Long getId() {
         return id;
@@ -72,4 +74,14 @@ public class Article {
     public void setHref(String href) {
         this.href = href == null ? null : href.trim();
     }
+
+	public String getChatHead() {
+		return chatHead;
+	}
+
+	public void setChatHead(String chatHead) {
+		this.chatHead = chatHead;
+	}
+    
+    
 }

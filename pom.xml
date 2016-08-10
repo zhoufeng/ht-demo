@@ -12,7 +12,7 @@
 		<module>gecco-java-demo</module>
 		<module>gecco-test</module>
 		<module>httpclient-demo</module>
-		<module>gecco-gov-test</module>
+		<module>gecco-common</module>
 		<module>spiderimpl</module>
 		<module>gecco-dao</module>
 		<module>gecco-service</module>
@@ -27,12 +27,23 @@
 	
 	<dependencies>
 		<!-- log4j -->
+		
+		
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.21</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
 		
 	</dependencies>
 	
@@ -149,17 +160,25 @@
 			<version>4.5.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.7</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>4.2.5.RELEASE</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>gecco-common</artifactId>
+  			<version>${project.version}</version>
 		</dependency>
 		
 	</dependencies>

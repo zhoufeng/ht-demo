@@ -17,6 +17,11 @@
   			<version>${parent.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>gecco-common</artifactId>
+		</dependency>
+		
 		<!-- 爬虫 -->
 		<dependency>
 			<groupId>com.geccocrawler</groupId>
@@ -64,6 +69,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
 		</dependency>
 
 		<!-- 定时任务 -->

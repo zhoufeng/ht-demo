@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
+import com.xiaomaoguai.gecco.common.ArticleSourceTypeEnum;
 import com.xiaomaoguai.gecco.entity.Article;
 import com.xiaomaoguai.gecco.mapper.ArticleMapper;
 
@@ -32,8 +33,6 @@ public class WeiboPipeline implements Pipeline<HomPage> {
 		for (WeiboArticle article : bean.getArticleList()) {
 			System.out.println(article.getCreateTime() + ":" + article.getContent());
 		}
-		
-		
 		for (WeiboArticle articleTo : bean.getArticleList()) {
 			if (articleMapper.selectByArticleId(articleTo.getArticleId()) != null) {
 				break;
@@ -43,6 +42,9 @@ public class WeiboPipeline implements Pipeline<HomPage> {
 					article.setArticleId(articleTo.getArticleId());
 					article.setContent(articleTo.getContent());
 					article.setAuthor(bean.getAuthor());
+					article.setSourceType(ArticleSourceTypeEnum.WEIBO.getType());
+					article.setHref("http://weibo.com"+articleTo.getHref());
+					article.setChatHead(articleTo.getChatHead());
 					article.setCreateTm(DateUtils.parseDate(articleTo.getCreateTime(), "yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm"));
 					articleMapper.insert(article);
 				} catch (Exception e) {

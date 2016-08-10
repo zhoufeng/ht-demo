@@ -15,11 +15,13 @@
 			<artifactId>gecco</artifactId>
 		</dependency>
 		
-		<!-- spring framework -->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
 		</dependency>
+		
 		
 
 		

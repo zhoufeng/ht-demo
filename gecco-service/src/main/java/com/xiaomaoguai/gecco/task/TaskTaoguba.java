@@ -19,7 +19,7 @@ import java.util.Date;
  * 日期 : 2016/4/27 16:26
  * 版本 : 1.0.0
  */
-@Service
+//@Service
 public class TaskTaoguba  implements Job {
 
     @Override

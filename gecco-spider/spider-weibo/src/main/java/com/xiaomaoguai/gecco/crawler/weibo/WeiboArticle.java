@@ -33,9 +33,15 @@ public class WeiboArticle implements HtmlBean{
 	@HtmlField(cssPath=".WB_detail [node-type=feed_list_content]")
 	private String content;
 	
-	@Text
-	@HtmlField(cssPath=".WB_from.S_txt2 a:first")
+	/**	文章链接地址 	**/
+	@Attr("href")
+	@HtmlField(cssPath=".WB_from.S_txt2 a[node-type=feed_list_item_date]")
 	private String href;
+	
+	/**	 头像地址 	**/
+	@Attr("src")
+	@HtmlField(cssPath=".WB_face.W_fl img")
+	private String chatHead;
 	
 
 	public String getArticleId() {
@@ -69,5 +75,15 @@ public class WeiboArticle implements HtmlBean{
 	public void setHref(String href) {
 		this.href = href;
 	}
+
+	public String getChatHead() {
+		return chatHead;
+	}
+
+	public void setChatHead(String chatHead) {
+		this.chatHead = chatHead;
+	}
+	
+	
 	
 }

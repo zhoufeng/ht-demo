@@ -27,7 +27,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.bohusoft.spider</groupId>
-			<artifactId>gecco-dao</artifactId>
+			<artifactId>gecco-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

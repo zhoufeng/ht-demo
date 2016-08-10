@@ -9,9 +9,10 @@
     <result column="create_tm" jdbcType="TIMESTAMP" property="createTm" />
     <result column="source_type" jdbcType="INTEGER" property="sourceType" />
     <result column="href" jdbcType="VARCHAR" property="href" />
+    <result column="chat_head" jdbcType="VARCHAR" property="chatHead" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, article_id, content, author, create_tm, source_type, href
+    id, article_id, content, author, create_tm, source_type, href,chat_head 
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -26,10 +27,10 @@
   <insert id="insert" parameterType="com.xiaomaoguai.gecco.entity.Article">
     insert into ds_article (id, article_id, content, 
       author, create_tm, source_type, 
-      href)
+      href,chat_head)
     values (#{id,jdbcType=BIGINT}, #{articleId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{author,jdbcType=VARCHAR}, #{createTm,jdbcType=TIMESTAMP}, #{sourceType,jdbcType=INTEGER}, 
-      #{href,jdbcType=VARCHAR})
+      #{href,jdbcType=VARCHAR},#{chatHead,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xiaomaoguai.gecco.entity.Article">
     insert into ds_article

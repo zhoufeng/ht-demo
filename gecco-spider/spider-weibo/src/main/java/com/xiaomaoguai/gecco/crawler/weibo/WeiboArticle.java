@@ -1,6 +1,7 @@
 package com.xiaomaoguai.gecco.crawler.weibo;
 
 import com.geccocrawler.gecco.annotation.Attr;
+import com.geccocrawler.gecco.annotation.Html;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.spider.HtmlBean;
@@ -29,7 +30,7 @@ public class WeiboArticle implements HtmlBean{
 	private String createTime;
 	
 	/**	发布内容	**/
-	@Text
+	@Html
 	@HtmlField(cssPath=".WB_detail [node-type=feed_list_content]")
 	private String content;
 	

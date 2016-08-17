@@ -32,7 +32,7 @@ public class TaskWeibo  implements Job {
         
         String[] persions=scheduleJob.getName().split(",");
         for(String persion:persions){
-	        HttpGetRequest start = new HttpGetRequest("http://weibo.com/"+persion);
+	        HttpGetRequest start = new HttpGetRequest("http://weibo.com/"+persion+"?profile_ftype=1&is_all=1#_0");
 	        start.addHeader("User-Agent", "spider");
 	        start.setCharset("GBK");
 	        GeccoEngine.create()

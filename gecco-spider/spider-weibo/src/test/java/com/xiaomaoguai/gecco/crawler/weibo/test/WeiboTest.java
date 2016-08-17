@@ -27,7 +27,7 @@ public class WeiboTest{
 
 	@Test
 	public void testFetch(){
-		HttpGetRequest start = new HttpGetRequest("http://weibo.com/kylinclub");
+		/*HttpGetRequest start = new HttpGetRequest("http://weibo.com/kylinclub");
 		//HttpGetRequest start = new HttpGetRequest("http://weibo.com/hecmcn");
 		start.addHeader("User-Agent", "spider");
         start.setCharset("GBK");
@@ -36,7 +36,7 @@ public class WeiboTest{
                 .start(start)
                 .interval(1000)
                 .loop(false)
-                .run();
+                .run();*/
 	}
 
 }

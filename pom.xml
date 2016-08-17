@@ -11,7 +11,6 @@
 		<module>gecco-spring-task</module>
 		<module>gecco-java-demo</module>
 		<module>gecco-test</module>
-		<module>httpclient-demo</module>
 		<module>gecco-common</module>
 		<module>gecco-spider</module>
 		<module>gecco-dao</module>

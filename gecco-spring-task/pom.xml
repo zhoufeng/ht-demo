@@ -47,11 +47,11 @@
 
 	<dependencies>
 		<!-- httpclient 模拟登录模块 -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.bohusoft.spider</groupId>
   			<artifactId>httpclient-demo</artifactId>
   			<version>${parent.version}</version>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>com.bohusoft.spider</groupId>

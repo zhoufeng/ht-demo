@@ -68,7 +68,7 @@ public class Requestor {
 				responseString = EntityUtils.toString(entity);
 				System.out.println("response length:" + responseString.length());
 				System.out.println("response content:" + responseString.replace("\r\n", ""));
-			} catch (org.apache.http.ParseException | IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}

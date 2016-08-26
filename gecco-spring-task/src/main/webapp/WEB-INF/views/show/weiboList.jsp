@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -17,9 +18,9 @@
 			
 
 	<dl>
-		<dt><a target="_blank" href="#"><img src="{{d.list[i].chatHead}}" class="headPic" onerror="javascript:this.src='/public500827/images/no.jpg'"></a>
+		<dt><a target="_blank" href="#"><img src="{{d.list[i].chatHead}}" class="headPic" onerror="javascript:this.src='${ctx}/static/images/no.jpg'"></a>
 		</dt>
-		<dd><a target="_blank" href="{{d.list[i].href}}">{{d.list[i].author}}</a> {{ d.list[i].content }}......<a target="_blank" href="{{d.list[i].href}}">查看全文</a></dd>
+		<dd><a target="_blank" href="{{d.list[i].href}}">{{d.list[i].author}}</a> {{ d.list[i].content }}</dd>
 		<br style="clear:both;" />
 	</dl>
 		<div>{{showTip(d.list[i])}}</div>	
@@ -56,13 +57,22 @@
 
 <div class="item">
 </div>
+
+	
+
 	<div class="container" >
-	<div id="list">
-		
+		<ul class="nav nav-tabs">
+		  <li role="presentation" <c:if test="${type==1}"> class="active"</c:if> ><a href="${ctx}/article/index?type=1">微博</a></li>
+		  <li role="presentation"<c:if test="${type==2}"> class="active"</c:if>><a href="${ctx}/article/index?type=2">淘股吧</a></li>
+		  <li role="presentation"<c:if test="${type==3}"> class="active"</c:if>><a href="${ctx}/article/index?type=3">滚雪球</a></li>
+		</ul>
+		<div id="list">
+			
+		</div>
+		<div id="pagediv"></div>
 	</div>
-<div id="pagediv"></div>
-	</div>
-</body><script>
+</body>
+<script>
 	var data={"list":[{"id":1,"content":"那时候山东黄金真的谁买谁赚钱，后来连卖金饰的破公司都跟着一起涨，当时竟然有了做大组合的良好机会：指数基金。用指数基金做盘底儿，码上黄金股，真的十个亿进去都舒服痛了。我们这些假经纪人之名希望用自己的魅力去征服客户的人是着急的，这时候就是大私募最好赚钱的时候，可是我们无一兵一卒。","author":"打湿","createTm":"2016-07-07"}]};
 	var gettpl = document.getElementById("article_item").innerHTML;
 	/* laytpl(gettpl).render(data, function(html){
@@ -100,7 +110,7 @@
 				_this=grid;
 				if(!pageNo)pageNo=_this.currentPage;
 				_this.currentPage=pageNo;
-				$.getJSON('article/list', {
+				$.getJSON('article/list?type='+${type}, {
 					"pageNo":pageNo
 				}, function(res) {
 					 var tpl = laytpl(gettpl);

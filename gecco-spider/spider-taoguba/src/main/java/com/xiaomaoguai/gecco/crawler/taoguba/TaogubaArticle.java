@@ -1,6 +1,9 @@
 package com.xiaomaoguai.gecco.crawler.taoguba;
 
+import java.util.List;
+
 import com.geccocrawler.gecco.annotation.Attr;
+import com.geccocrawler.gecco.annotation.Html;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.spider.HtmlBean;
@@ -18,37 +21,41 @@ public class TaogubaArticle implements HtmlBean{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**	标题	**/
-	@Text
-	@HtmlField(cssPath="td")
-	private String articleId;	
+	/**	链接地址	**/
+	@Attr("href")
+	@HtmlField(cssPath="td.suh a")
+	private String href;	
 	
 	/**	发布时间	**/
-	@Text
-	@HtmlField(cssPath="td.suh a")
-	private String createTime;
+	@Html
+	@HtmlField(cssPath="td")
+	private List<String> html;
 	
 	/**	发布内容	**/
-	@Text
-	@HtmlField(cssPath=".WB_detail [node-type=feed_list_content]")
+	@Html
+	@HtmlField(cssPath="td.suh")
 	private String content;
 
 	
 
-	public String getArticleId() {
-		return articleId;
+	public String getHref() {
+		return href;
 	}
 
-	public void setArticleId(String articleId) {
-		this.articleId = articleId;
+	public void setHref(String href) {
+		this.href = href;
 	}
 
-	public String getCreateTime() {
-		return createTime;
+
+
+
+
+	public List<String> getHtml() {
+		return html;
 	}
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
+	public void setHtml(List<String> html) {
+		this.html = html;
 	}
 
 	public String getContent() {

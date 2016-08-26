@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.xiaomaoguai.gecco.entity.Article;
 import com.xiaomaoguai.gecco.mapper.ArticleMapper;
-import com.xiaomaoguai.gecco.service.WeiboService;
+import com.xiaomaoguai.gecco.service.ArticleService;
 
 @Service
-public class WeiboServiceImpl implements WeiboService {
+public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
 	private ArticleMapper articleMapper;
@@ -19,7 +19,7 @@ public class WeiboServiceImpl implements WeiboService {
 	
 	@Override
 	public List<Article> articleList(Map<String,Object> params) {
-		List<Article> list=articleMapper.selectPageList();
+		List<Article> list=articleMapper.selectPageList(params);
 		return list;
 	}
 	

@@ -6,7 +6,7 @@ import java.util.Map;
 import com.xiaomaoguai.gecco.entity.Article;
 
 
-public interface WeiboService {
+public interface ArticleService {
 	
 	public List<Article> articleList(Map<String,Object> params);
 }

@@ -35,7 +35,7 @@ public class WeiboPipeline implements Pipeline<HomPage> {
 		}
 		for (WeiboArticle articleTo : bean.getArticleList()) {
 			if (articleMapper.selectByArticleId(articleTo.getArticleId()) != null) {
-				break;
+				continue;
 			} else {
 				try {
 					Article article = new Article();

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
+import com.xiaomaoguai.gecco.common.ArticleSourceTypeEnum;
 import com.xiaomaoguai.gecco.entity.Article;
 import com.xiaomaoguai.gecco.mapper.ArticleMapper;
 
@@ -24,26 +25,30 @@ import com.xiaomaoguai.gecco.mapper.ArticleMapper;
 @Service
 public class TaogubaPipeline implements Pipeline<BlogList> {
 	private static Log log = LogFactory.getLog(GeccoEngine.class);
+	private static final String href_prefix="http://www.taoguba.com.cn/";
 	@Autowired
 	private ArticleMapper articleMapper;
 
 	@Override
 	public void process(BlogList bean) {
 		
-		
-		for (TaogubaArticle articleTo : bean.getArticleList()) {
-			if (articleMapper.selectByArticleId(articleTo.getArticleId()) != null) {
+		for(TaogubaArticle articleTo : bean.getArticleList()) {
+			String href=articleTo.getHref();
+			String articleId="taoguba_"+href.split("/")[1];
+			if (articleMapper.selectByArticleId(articleId) != null) {
 				break;
 			} else {
+				Article article = new Article();
 				try {
-					Article article = new Article();
-					article.setArticleId(articleTo.getArticleId());
-					article.setContent(articleTo.getContent());
+					article.setArticleId(articleId);
+					article.setContent(articleTo.getContent().replaceAll(href, href_prefix+href));
 					article.setAuthor(bean.getAuthor());
-					article.setCreateTm(DateUtils.parseDate(articleTo.getCreateTime(), "yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm"));
+					article.setHref(href_prefix+href);
+					article.setSourceType(ArticleSourceTypeEnum.TAOGUBA.getType());
+					article.setCreateTm(DateUtils.parseDate(articleTo.getHtml().get(articleTo.getHtml().size()-1), "yyyy-MM-dd HH:mm:ss","yyyy-MM-dd"));
 					articleMapper.insert(article);
 				} catch (Exception e) {
-					log.error("微博保存数据库出错:[createTm=" + articleTo.getCreateTime() + "]", e);
+					log.error("淘股吧保存数据库出错:[createTm=" + article.getCreateTm() + "]", e);
 				}
 			}
 		}

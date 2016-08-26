@@ -1,7 +1,11 @@
 package com.xiaomaoguai.gecco.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import com.xiaomaoguai.gecco.entity.Article;
@@ -22,5 +26,7 @@ public interface ArticleMapper {
     @Select("select * from ds_article where article_id = #{id}") 
     Article selectByArticleId(String id);
     
-    List<Article> selectPageList();
+    @Select("select * from ds_article where source_type = #{type} order by create_tm desc limit 50") 
+    @ResultMap("com.xiaomaoguai.gecco.mapper.ArticleMapper.BaseResultMap")
+    List<Article> selectPageList(Map<String,Object> params);
 }

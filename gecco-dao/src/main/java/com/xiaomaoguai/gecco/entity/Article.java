@@ -7,16 +7,21 @@ public class Article {
 
     private String articleId;
 
+    /** 文章内容 */
     private String content;
 
+    /** 作者 */
     private String author;
 
     private Date createTm;
 
+    /** 来源(1.微博 2.淘股吧 3.滚雪球) */
     private Integer sourceType;
 
+    /** 文章链接 */
     private String href;
     
+    /** 头像地址 */
     private String chatHead;
 
     public Long getId() {

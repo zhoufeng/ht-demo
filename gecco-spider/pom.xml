@@ -15,7 +15,7 @@
 	<modules>
 		<module>spider-weibo</module>
 		<module>spider-taoguba</module>
-		<!-- <module>spider-nuomi</module> -->
+		<module>spider-gunxueqiu</module>
 	</modules>
 
 	<properties>

@@ -66,9 +66,20 @@
 		</dependency>
 		
 		<!-- 微博 -->
+		<!-- <dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>gecco-spider</artifactId>
+  			<version>${parent.version}</version>
+  			<type>pom</type>
+		</dependency> -->
 		<dependency>
 			<groupId>com.bohusoft.spider</groupId>
   			<artifactId>spider-weibo</artifactId>
+  			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>spider-taoguba</artifactId>
   			<version>${parent.version}</version>
 		</dependency>
 	
@@ -85,6 +96,10 @@
 		<dependency>
 			<groupId>com.geccocrawler</groupId>
 			<artifactId>gecco</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.geccocrawler</groupId>
+		    <artifactId>gecco-htmlunit</artifactId>
 		</dependency>
 
 

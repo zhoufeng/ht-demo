@@ -20,7 +20,7 @@ package com.xiaomaoguai.gecco.common;
  */
 public enum ArticleSourceTypeEnum {
 	
-	WEIBO(1,"微博"),TAOGUBA(2,"淘股吧");
+	WEIBO(1,"微博"),TAOGUBA(2,"淘股吧"),GUNXUEQIU(3,"滚雪球");
 	
 	private Integer type;
 	private String name;

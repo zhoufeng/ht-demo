@@ -17,9 +17,9 @@ import com.geccocrawler.gecco.spider.HtmlBean;
  * @ClassName HomPage
  * @Version 1.0.0
  */
-@Gecco(matchUrl="http://www.taoguba.com.cn/moreTopic?userID={author}", pipelines={"taogubaPipeline"},timeout=5000)
+@Gecco(matchUrl="http://www.taoguba.com.cn/moreTopic?userID={userId}", pipelines={"taogubaPipeline"},timeout=5000)
 public class BlogList implements HtmlBean {
-
+	private static final String cookies="CNZZDATA1574657=cnzz_eid%3D1594779987-1469604292-%26ntime%3D1472001974; tgbuser=251331; tgbpwd=5426428033Fopl6gondcvshvsh; td_cookie=429057643; zhihu=1; bdshare_firstime=1470027696474; JSESSIONID=617D15D5B85594B60B33267D0";
 	/**
 	 * 
 	 */
@@ -28,6 +28,8 @@ public class BlogList implements HtmlBean {
 	@Text
 	@HtmlField(cssPath="#topbar .left b")
 	private String author;
+	
+	private Integer userId;
 	
 	@Request
 	private HttpRequest request;
@@ -61,10 +63,18 @@ public class BlogList implements HtmlBean {
 		this.author = author;
 	}
 
+	
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public static void main(String[] args) {
 			HttpGetRequest start = new HttpGetRequest("http://weibo.com/kylinclub");
 			//HttpGetRequest start = new HttpGetRequest("http://weibo.com/hecmcn");
-			start.addHeader("User-Agent", "spider");
 	        start.setCharset("GBK");
 	        GeccoEngine.create()
 	                .classpath("com.xiaomaoguai.gecco.crawler.weibo")

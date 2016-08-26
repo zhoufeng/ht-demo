@@ -17,6 +17,35 @@
 		<module>gecco-service</module>
 	</modules>
 
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<web.work.model>normal</web.work.model>
+				<config.root>C:/xunyong/config</config.root>
+			</properties>
+		</profile>
+		<profile>
+			<id>local</id>
+			<activation>
+				<!-- <activeByDefault>true</activeByDefault> -->
+				<property>
+					<name>env</name>
+					<value>local</value>
+				</property>
+			</activation>
+			<properties>
+				<web.work.model>local</web.work.model>
+				<config.root>E:/pay/config/basis/site</config.root>
+			</properties>
+		</profile>
+	</profiles>
+
+
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
@@ -65,6 +94,12 @@
 			<groupId>com.geccocrawler</groupId>
 			<artifactId>gecco</artifactId>
 			<version>1.2.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.geccocrawler</groupId>
+		    <artifactId>gecco-htmlunit</artifactId>
+		    <version>1.0.9</version>
 		</dependency>
 		
 		<!-- mybatis -->

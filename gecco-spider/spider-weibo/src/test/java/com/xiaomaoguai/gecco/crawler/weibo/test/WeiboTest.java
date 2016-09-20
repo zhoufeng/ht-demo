@@ -11,7 +11,7 @@ import com.geccocrawler.gecco.request.HttpGetRequest;
 /**
  * 微博列表页面
  * @author zhoufeng
- * @ClassName HomPage
+ * @ClassName
  * @Version 1.0.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)  //使用junit4进行测试  

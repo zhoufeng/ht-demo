@@ -1,17 +1,18 @@
-package com.xiaomaoguai.gecco.crawler.weibo;
+package com.xiaomaoguai.gecco.crawler.weibo.article;
 
 import com.geccocrawler.gecco.annotation.Attr;
+import com.geccocrawler.gecco.annotation.Gecco;
 import com.geccocrawler.gecco.annotation.Html;
 import com.geccocrawler.gecco.annotation.HtmlField;
-import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 /**
  * 微博列表每一个item的解析bean
  * @author zhoufeng
- * @ClassName WeiboArticle
+ * @ClassName
  * @Version 1.0.0
  */
+@Gecco(matchUrl="http://weibo.com/{aid}/{cid}", pipelines={"weiboArticlePipeline"},timeout=10000)
 public class WeiboArticle implements HtmlBean{
 	
 	/**
@@ -33,6 +34,13 @@ public class WeiboArticle implements HtmlBean{
 	@Html
 	@HtmlField(cssPath=".WB_detail [node-type=feed_list_content]")
 	private String content;
+	
+	/**	发布内容	**/
+	@Html
+	@HtmlField(cssPath=".W_f14.W_fb.S_txt1")
+	private String author;
+	
+	
 	
 	/**	文章链接地址 	**/
 	@Attr("href")
@@ -83,6 +91,14 @@ public class WeiboArticle implements HtmlBean{
 
 	public void setChatHead(String chatHead) {
 		this.chatHead = chatHead;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	

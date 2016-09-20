@@ -18,13 +18,15 @@
 			
 
 	<dl>
-		<dt><a target="_blank" href="#"><img src="{{d.list[i].chatHead}}" class="headPic" onerror="javascript:this.src='${ctx}/static/images/no.jpg'"></a>
+		<dt><a target="_blank" href="#"><img src="{{d.list[i].chatHead}}" class="headPic" onerror="javascript:this.src='${ctx}/static/images/no.jpg'" /></a>
 		</dt>
-		<dd><a target="_blank" href="{{d.list[i].href}}">{{d.list[i].author}}</a> {{ d.list[i].content }}</dd>
+		<dd><a target="_blank" href="{{d.list[i].href}}">{{d.list[i].author}}</a> {{ d.list[i].content }}
+			<a target="_blank" href="{{d.list[i].href}}">查看全文</a>
+		</dd>
 		<br style="clear:both;" />
 	</dl>
 		<div>{{showTip(d.list[i])}}</div>	
-		</div>
+</div>
 {{# } }}
 
 </script>
@@ -65,6 +67,7 @@
 		  <li role="presentation" <c:if test="${type==1}"> class="active"</c:if> ><a href="${ctx}/article/index?type=1">微博</a></li>
 		  <li role="presentation"<c:if test="${type==2}"> class="active"</c:if>><a href="${ctx}/article/index?type=2">淘股吧</a></li>
 		  <li role="presentation"<c:if test="${type==3}"> class="active"</c:if>><a href="${ctx}/article/index?type=3">滚雪球</a></li>
+		   <li role="presentation"<c:if test="${type==4}"> class="active"</c:if>><a href="${ctx}/article/index?type=4">55168</a></li>
 		</ul>
 		<div id="list">
 			
@@ -81,7 +84,7 @@
 	
 	function showTip(item){
 		
-		var text='<span style="margin-right:30px">'+item.createTm+"</span>";
+		var text='<span style="margin-right:30px" >'+item.createTm+"</span>";
 		switch(item.sourceType){
 		case 1:
 			text+="来自新浪微博";
@@ -121,7 +124,7 @@
 			},
 			init:function(pageNo){ //初始化
 				//轮询数据.设置8秒请求一次数据
-				//setInterval(this.request,8000);
+				setInterval(this.request,8000);
 				this.request(1);
 				
 			}

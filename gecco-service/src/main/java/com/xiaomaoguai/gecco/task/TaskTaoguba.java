@@ -2,16 +2,18 @@ package com.xiaomaoguai.gecco.task;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.request.HttpGetRequest;
+import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spring.SpringPipelineFactory;
 import com.xiaomaoguai.gecco.common.utils.SpringContextUtil;
 import com.xiaomaoguai.gecco.entity.ScheduleJob;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 说明 :淘股吧task任务
@@ -31,7 +33,27 @@ public class TaskTaoguba  implements Job {
 
         SpringPipelineFactory springPipelineFactory = SpringContextUtil.getBean("springPipelineFactory");
         
-        //设置HttpGetRequest对象属性
+       
+        
+        
+        String[] persions=scheduleJob.getName().split(",");
+        List<HttpRequest> reqList=new ArrayList<HttpRequest>();
+        for(String persion:TaskUserManager.users.get("taoguba")){
+        	HttpGetRequest start = createRequestObj();
+	        start.setUrl("http://www.taoguba.com.cn/moreTopic?userID="+persion);
+	        reqList.add(start);
+        }
+        GeccoEngine.create()
+        .pipelineFactory(springPipelineFactory)
+        .classpath("com.xiaomaoguai.gecco.crawler.taoguba")
+        .start(reqList)
+        .interval(2000)
+        .loop(false)
+        .run();
+    }
+    
+    private  HttpGetRequest createRequestObj(){
+    	 //设置HttpGetRequest对象属性
         HttpGetRequest start = new HttpGetRequest();
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0");
 		//start.addHeader("Host", "www.taoguba.com.cn");
@@ -43,18 +65,6 @@ public class TaskTaoguba  implements Job {
 			start.addCookie(cookieArr[0], cookieArr[1]);
 		}
 		start.setCharset("GBK");
-        
-        
-        String[] persions=scheduleJob.getName().split(",");
-        for(String persion:persions){
-	        start.setUrl("http://www.taoguba.com.cn/moreTopic?userID="+persion);
-	        GeccoEngine.create()
-	                .pipelineFactory(springPipelineFactory)
-	                .classpath("com.xiaomaoguai.gecco.crawler.taoguba")
-	                .start(start)
-	                .interval(2000)
-	                .loop(false)
-	                .run();
-        }
+		return start;
     }
 }

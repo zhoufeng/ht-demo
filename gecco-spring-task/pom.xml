@@ -187,9 +187,18 @@
 
 	<build>
 		<finalName>gecco-spring-task</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 		<plugins>
-
-			
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -206,7 +215,7 @@
 				<version>9.3.7.v20160115</version>
 				<configuration>
 					<webApp>
-						<contextPath>/</contextPath>
+						<contextPath>/gecco-spring-task</contextPath>
 						<descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
 					</webApp>
 					<stopKey>exit</stopKey>
@@ -214,7 +223,7 @@
 					<webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<httpConnector>
-						<port>80</port>
+						<port>8080</port>
 					</httpConnector>
 				</configuration>
 			</plugin>

@@ -1,15 +1,12 @@
-package com.xiaomaoguai.gecco.crawler.weibo;
-
-import java.util.List;
+package com.xiaomaoguai.gecco.crawler.weibo.list;
 
 import com.geccocrawler.gecco.GeccoEngine;
-import com.geccocrawler.gecco.annotation.Gecco;
-import com.geccocrawler.gecco.annotation.HtmlField;
-import com.geccocrawler.gecco.annotation.Request;
-import com.geccocrawler.gecco.annotation.Text;
+import com.geccocrawler.gecco.annotation.*;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
+
+import java.util.List;
 
 /**
  * 微博列表页面
@@ -17,8 +14,8 @@ import com.geccocrawler.gecco.spider.HtmlBean;
  * @ClassName HomPage
  * @Version 1.0.0
  */
-@Gecco(matchUrl="http://weibo.com/{author}", pipelines={"weiboPipeline"},timeout=5000)
-public class HomPage implements HtmlBean {
+@Gecco(matchUrl="http://weibo.com/{author}", pipelines={"weiboArticleListPipeline"},timeout=5000)
+public class WeiboList implements HtmlBean {
 
 	/**
 	 * 
@@ -32,9 +29,9 @@ public class HomPage implements HtmlBean {
 	@Request
 	private HttpRequest request;
 	
-	
-	@HtmlField(cssPath=".WB_frame_c div[tbinfo]")
-	private List<WeiboArticle> articleList;
+	@Attr("href")
+	@HtmlField(cssPath=".WB_frame_c div[tbinfo] .WB_from.S_txt2 a[node-type=feed_list_item_date]")
+	private List<String> articleList;
 
 	public HttpRequest getRequest() {
 		return request;
@@ -45,11 +42,11 @@ public class HomPage implements HtmlBean {
 	}
 
 	
-	public List<WeiboArticle> getArticleList() {
+	public List<String> getArticleList() {
 		return articleList;
 	}
 
-	public void setArticleList(List<WeiboArticle> articleList) {
+	public void setArticleList(List<String> articleList) {
 		this.articleList = articleList;
 	}
 

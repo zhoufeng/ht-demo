@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.bohusoft.spider</groupId>
@@ -34,19 +34,39 @@
 		</profile>
 	</profiles>
 	<dependencies>
-		
+
 		<!-- dao层 -->
 		<dependency>
 			<groupId>com.bohusoft.spider</groupId>
-  			<artifactId>gecco-dao</artifactId>
-  			<version>${parent.version}</version>
+			<artifactId>gecco-dao</artifactId>
+			<version>${parent.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.bohusoft.spider</groupId>
-  			<artifactId>gecco-common</artifactId>
+			<artifactId>gecco-common</artifactId>
 		</dependency>
-		
+
+
+		<!-- 微博 -->
+		<!-- <dependency>
+			<groupId>com.bohusoft.spider</groupId>
+  			<artifactId>gecco-spider</artifactId>
+  			<version>${parent.version}</version>
+  			<type>pom</type>
+		</dependency> -->
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+			<artifactId>spider-weibo</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.bohusoft.spider</groupId>
+			<artifactId>spider-taoguba</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+
+
 		<!-- 爬虫 -->
 		<dependency>
 			<groupId>com.geccocrawler</groupId>
@@ -62,7 +82,7 @@
 			<groupId>com.geccocrawler</groupId>
 			<artifactId>gecco</artifactId>
 		</dependency>
-	
+
 		<!-- spring framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -95,11 +115,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 		</dependency>
 
 		<!-- 定时任务 -->
@@ -111,10 +131,10 @@
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz-jobs</artifactId>
 		</dependency>
-		
-		
+
+
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -126,7 +146,7 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 

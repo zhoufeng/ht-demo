@@ -29,16 +29,16 @@ public class MainWeiboLogin {
     private static StringBuilder cookieStr = new StringBuilder();
 
     /**
-     *ÏÈÊ¹ÓÃgetÇëÇó»ñÈ¡preloginÖĞ·µ»ØµÄ²ÎÊı ÔÚºóÃæµÄµÇÂ½ÖĞ½øĞĞÊ¹ÓÃ
+     *å…ˆä½¿ç”¨getè¯·æ±‚è·å–preloginä¸­è¿”å›çš„å‚æ•° åœ¨åé¢çš„ç™»é™†ä¸­è¿›è¡Œä½¿ç”¨
      *
      * http://login.sina.com.cn/sso/prelogin.php?entry=account&callback=sinaSSOController.preloginCallBack&su=MTUwMDgxMTA1OSU0MHFxLmNvbQ%3D%3D&rsakt=mod&client=ssologin.js(v1.4.15)&_
      * =1451465771827
      *
-     *  @return map prelogin.php ÖĞ·µ»ØµÄÖµ ·ÅÈëmapÖĞ
+     *  @return map prelogin.php ä¸­è¿”å›çš„å€¼ æ”¾å…¥mapä¸­
      */
     public void preLogin(){
         CloseableHttpResponse response = HttpGetRequest.getRequest("http://login.sina.com.cn/sso/prelogin.php?entry=account&callback=sinaSSOController.preloginCallBack&su=MTUwMDgxMTA1OSU0MHFxLmNvbQ%3D%3D&rsakt=mod&client=ssologin.js(v1.4.15)&_="
-                + new Date().getTime()
+                        + new Date().getTime()
                 , PreLoginHeaders.packageHeaders());
         HttpEntity entity = response.getEntity();
         try {
@@ -52,10 +52,10 @@ public class MainWeiboLogin {
 
 
     /**
-     * ÕâÒ»²½ÎªµÇÂ¼²Ù×÷ ¾ßÌåµÄÓÃ»§ÃûºÍÃÜÂëµÄ¼ÓÃÜÊÇÔÚÍøÉÏ½øĞĞ°Ù¶ÈµÄ
+     * è¿™ä¸€æ­¥ä¸ºç™»å½•æ“ä½œ å…·ä½“çš„ç”¨æˆ·åå’Œå¯†ç çš„åŠ å¯†æ˜¯åœ¨ç½‘ä¸Šè¿›è¡Œç™¾åº¦çš„
      *
-     * °Ù¶Èrsa2¼ÓÃÜËã·¨  Õâ¸öËã·¨ÎªĞÂÀË×Ô¼ºĞ´µÄÒ»¸ö¼ÓÃÜËã·¨ Ê¹ÓÃjavascript¼ÓÃÜ
-     * ¸ú12306Ò»Ñù¶¼ÊÇĞèÒª¼ÓÔØÏÂÀ´jsÒÔºó  Ê¹ÓÃjava½øĞĞ¼ÓÃÜ
+     * ç™¾åº¦rsa2åŠ å¯†ç®—æ³•  è¿™ä¸ªç®—æ³•ä¸ºæ–°æµªè‡ªå·±å†™çš„ä¸€ä¸ªåŠ å¯†ç®—æ³• ä½¿ç”¨javascriptåŠ å¯†
+     * è·Ÿ12306ä¸€æ ·éƒ½æ˜¯éœ€è¦åŠ è½½ä¸‹æ¥jsä»¥å  ä½¿ç”¨javaè¿›è¡ŒåŠ å¯†
      *
      * https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.15)&_=1451465771926
      *
